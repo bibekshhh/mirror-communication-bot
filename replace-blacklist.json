@@ -1,0 +1,11 @@
+{
+   "replacements": {
+"@​everyone":"",
+"black":"white",
+"@here":""
+
+    },
+    "blacklist": ["black1", "black2"],
+    "blacklistembed": ["black1", "black2"]
+}
+

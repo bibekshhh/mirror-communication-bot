@@ -1,0 +1,49 @@
+Node.JS
+- Install Node.JS v18 -> https://nodejs.org/dist/v18.16.0/node-v18.16.0-x64.msi
+
+Create a folder for the tool and put the 3 files in the folder.
+In a CMD, from the tool folder, type and run > npm install discord.js-selfbot
+
+Now Node.JS is installed as well as the .JS package to run the tool
+
+General config:
+
+- Requires a user-token for listening in the servers you want to copy from
+- user-token must be in the server and have the channels visible
+- 
+
+config.json:
+
+token : your user-token in a token-only format
+allowmentions : true / false
+ping : If you want a certain discord group to get a ping/mention when something is send in a particular channel just math the channel and the group ID
+channels : you need the ID of the source and Webhook for destination - All posts will be sent as a webhook
+
+** You can add lines as required in the PING and CHANNELs sections. Each line must end with "," except for the last line of each sections, this is the JSON standard
+
+discord-copier.js (This is the main tool)
+
+lines required to be edited:
+37 -> If you want something extra at the end of each copy post, you can add text there and remove //
+39 -> Replace with the name you want for Webhook (users will see this)
+40 -> Replace with HTTP link of the avatar to be shown to the users
+51-52 same for embed. But can be different if desired)
+
+replace-blacklist.json
+*all must be lowercase (important)
+replacement : you can replace any strings by another one like black/white example... If you leave the second empty like "" it will simply omit a replacement and just remove the word
+blacklist : if a post contains any workd from the blacklist, the entire post will not be copied
+
+
+Again, this follows JSON standards, if you add a line, it must end with "," 
+
+
+If the tool crashes on start, it's usually a bad JSON syntax, you can run a JSON checker
+
+To run the tool, either do:
+
+- right click the .js and run with Node.JS
+or 
+- run node discord-copier.js
+or my favorite
+- make a batch file to run it (I included an example)
