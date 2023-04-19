@@ -24,21 +24,28 @@ bot.on('message', (message => {
             const hook = new Discord.WebhookClient(ID, token)
            
 			let mention = config.ping[message.channel.id]
-        if(content == "") return //don't copy messages with only dot  (If enabled embeds only will not follow
-		if(content == ".") return //don't copy messages with only dot
-		if(content == "\\") return //don't copy messages with only backslash
-		if(content == "-") return //don't copy messages with only "-"
-		if(content == " .") return //don't copy messages with only "."
-		if(content == " -") return //don't copy messages with only "-"
-		if(content == lastContent.last) return //If content identical to last message return
-		lastContent.last = content //Store this message into lastContent
+            if(content == "") return //don't copy messages with only dot  (If enabled embeds only will not follow
+            if(content == ".") return //don't copy messages with only dot
+            if(content == "\\") return //don't copy messages with only backslash
+            if(content == "-") return //don't copy messages with only "-"
+            if(content == " .") return //don't copy messages with only "."
+            if(content == " -") return //don't copy messages with only "-"
+            if(content == lastContent.last) return //If content identical to last message return
+            lastContent.last = content //Store this message into lastContent
 
             hook.send({
-//			content:  content + `\nTextToAdd`,	// This will add an extra text at the end of the post
-			files: message.attachments.array(),
-			username: 'WEBHOOK-BOT-USERNAME', // Bot Name Seen By The Users for the Webhook
-			avatarURL: 'BOT-AVATAR.png', // Bot Avatar HTTP URL
-			}).catch(err => hook.send(embed(`Message could not be sent. Is the webhook correct?\n[Link to the message](https://discord.com/channels/${message.guild.id}/${message.channel.id}/${message.id})`)))
+                content:  content,	// This will add an extra text at the end of the post
+                files: message.attachments.array(),
+                username: 'test-bot', // Bot Name Seen By The Users for the Webhook
+                avatarURL: 'https://avatars.githubusercontent.com/u/90471455?v=4', // Bot Avatar HTTP URL
+			})
+            .catch(err => {
+                console.log(err)
+                hook.send(
+                    embed(`Message could not be sent. Is the webhook correct?\n[Link to the message](https://discord.com/channels/${message.guild.id}/${message.channel.id}/${message.id})`)
+                )}
+            )
+                
             
 	
 			if(message.embeds.length){
@@ -47,10 +54,13 @@ bot.on('message', (message => {
 		
                     e = checkEmbedForKeywordsAnd('replace', e, regExp)
                    hook.send({
-					embeds: [e],
-			username: 'WEBHOOK-BOT-USERNAME', // Bot Name Seen By The Users for the Webhook
-			avatarURL: 'BOT-AVATAR.png', // Bot Avatar HTTP URL
-			}).catch(err => hook.send(embed(`Message could not be sent. Is the webhook correct?\n[Link to the message](https://discord.com/channels/${message.guild.id}/${message.channel.id}/${message.id})`)))
+                        embeds: [e],
+                        username: 'test-bot', // Bot Name Seen By The Users for the Webhook
+                        avatarURL: 'https://avatars.githubusercontent.com/u/90471455?v=4', // Bot Avatar HTTP URL
+                    })
+                    .catch(err => 
+                        hook.send(embed(`Message could not be sent. Is the webhook correct?\n[Link to the message](https://discord.com/channels/${message.guild.id}/${message.channel.id}/${message.id})`))
+                    )
                 }
             }
 
@@ -60,7 +70,6 @@ bot.on('message', (message => {
     }
 }))
 bot.on('ready', () => {
-
     let channels = Object.keys(config.channels).flat()
     for(let id of channels){
         if(!bot.channels.cache.has(id))

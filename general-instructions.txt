@@ -27,7 +27,7 @@ lines required to be edited:
 37 -> If you want something extra at the end of each copy post, you can add text there and remove //
 39 -> Replace with the name you want for Webhook (users will see this)
 40 -> Replace with HTTP link of the avatar to be shown to the users
-51-52 same for embed. But can be different if desired)
+51-52 same for embed. But can be different if desired
 
 replace-blacklist.json
 *all must be lowercase (important)
