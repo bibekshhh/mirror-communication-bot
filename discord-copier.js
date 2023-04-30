@@ -45,8 +45,6 @@ bot.on('message', (message => {
                     embed(`Message could not be sent. Is the webhook correct?\n[Link to the message](https://discord.com/channels/${message.guild.id}/${message.channel.id}/${message.id})`)
                 )}
             )
-                
-            
 	
 			if(message.embeds.length){
                 for(let e of message.embeds){
@@ -139,8 +137,7 @@ function generateRegEx(){
 function replace(str, regExp){
     while(regExp.test(str)){
         let match = str.match(regExp)
-        str = str.replace(new RegExp(escapeRegExp(match[0])), configReplaceBlacklist.replacements[match[0].toLowerCase()])
+        str = str.replace(new RegExp(escapeRegExp(match[0]), "gi"), configReplaceBlacklist.replacements[match[0]])
     }
     return str
 }
-

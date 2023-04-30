@@ -1,7 +1,9 @@
 {
    "replacements": {
         "@​everyone":"",
-        "black":"white",
+        "Twitter| @GalaxyTradesLLC":"SSG LLC",
+        "Hi": "Hello",
+        "@Hi": "Hello when @",
         "@here":""
     },
     "blacklist": ["black1", "black2"],
