@@ -1,11 +1,11 @@
 {
-    "token": "ODc0NTE3ODAwNDgyNDAyMzI1.GzrW98.bn9Vu_zXkjDDupbeX5yL8MWg207Mn68Zs9jQqw",
+    "token": "auth token",
     "allowMentions": true,
     "ping": {
         "PING-CHANNEL":"PING-ROLE",
         "channel ID":"@mention"
     },
     "channels": {
-        "1098131900465426476" :["https://discord.com/api/webhooks/1098134985510244362/TXDA-gZ7Qr5GL8YroGs8c8DSYzZNb9vetbSfhgAJSA5r2EyuK5F-dqt936FTau4C3wsx"]
+        "source channel id" :["receiving webhook url"]
     }
 }
